@@ -10,9 +10,14 @@ const blog= require('./models/blog');
 
 app.set("view engine", "ejs");
 
-mongoose.connect(process.env.MONGO_URL)
-    .then(()=> console.log('MongoDB connected'))
-    .catch((err)=> console.log(err));
+const dbURI = process.env.MONGO_URL;
+
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB Atlas'))
+  .catch(err => {
+    console.error('Error connecting to MongoDB:', err);
+    process.exit(1);  // Exit the process if connection fails
+});
 
 const path= require('path');
 const checkForCookies = require('./middlewares/authentication');
