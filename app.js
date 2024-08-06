@@ -12,7 +12,7 @@ app.set("view engine", "ejs");
 
 const dbURI = process.env.MONGO_URL;
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true,   serverSelectionTimeoutMS: 50000  })
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch(err => {
     console.error('Error connecting to MongoDB:', err);
