@@ -18,6 +18,8 @@ const client = new MongoClient(dbURI, {
       version: ServerApiVersion.v1,
       strict: true,
       deprecationErrors: true,
+      serverSelectionTimeoutMS: 50000, // Increase server selection timeout
+     socketTimeoutMS: 45000, // Increase socket timeout
     }
   });
   async function run() {
