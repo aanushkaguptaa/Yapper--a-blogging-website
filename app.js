@@ -11,30 +11,9 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 
 app.set("view engine", "ejs");
 
-const dbURI = process.env.MONGO_URL;
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(dbURI, {
-    serverApi: {
-      version: ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
-      serverSelectionTimeoutMS: 50000, // Increase server selection timeout
-     socketTimeoutMS: 45000, // Increase socket timeout
-    }
-  });
-  async function run() {
-    try {
-      // Connect the client to the server	(optional starting in v4.7)
-      await client.connect();
-      // Send a ping to confirm a successful connection
-      await client.db("admin").command({ ping: 1 });
-      console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    } finally {
-      // Ensures that the client will close when you finish/error
-      await client.close();
-    }
-  }
-  run().catch(console.dir);
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.log("Some error: ", err));
 
 const path= require('path');
 const checkForCookies = require('./middlewares/authentication');
