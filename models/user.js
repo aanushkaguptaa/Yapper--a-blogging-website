@@ -57,7 +57,6 @@ userSchema.static('matchPassword', async function(email, password) {
     .digest('hex');
     if(checkPassword !== hashedPassword)
         throw new Error('Incorrect password');
-    
     const token= createTokenForUser(user);
     return token;
 })
