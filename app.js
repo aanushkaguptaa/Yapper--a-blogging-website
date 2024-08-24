@@ -11,12 +11,14 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 
 app.set("view engine", "ejs");
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+const uri = process.env.MONGO_URL;
+
+mongoose.connect(uri)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log("Some error: ", err));
 
 const path= require('path');
-const checkForCookies = require('./middlewares/authentication');
+const checkForCookies = require  ('./middlewares/authentication');
 app.set("views", path.resolve('./views'));
 
 app.use(express.urlencoded({extended: false}));
