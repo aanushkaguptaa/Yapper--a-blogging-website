@@ -82,6 +82,7 @@ router.get('/files/:filename', (req, res) => {
     }
 
     const readstream = gfs.createReadStream({ filename: file.filename });
+    res.setHeader('Content-Type', file.contentType);
     readstream.pipe(res);
   });
 });
