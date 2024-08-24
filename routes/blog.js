@@ -5,7 +5,7 @@ const { GridFSBucket } = require('mongodb');
 const mongoose = require('mongoose');
 const Blog = require('../models/blog');
 const Comment = require('../models/comments');
-const gfs = require('gridfs');
+const gfs = require('../services/gridfs');
 
 const upload = multer({
   storage: multer.memoryStorage(), // Store files in memory temporarily
