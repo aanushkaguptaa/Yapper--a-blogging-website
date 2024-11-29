@@ -2,31 +2,37 @@
 <html lang="en">
 <head>
     <%- include('./partials/head.ejs') %>
+    <script src="https://cdn.tiny.cloud/1/<%= process.env.TINY_MCE_API_KEY %>/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#body',
+            plugins: 'anchor autolink charmap codesample emoticons link lists searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    </script>
     <title>Add New Blog</title>
 </head>
 <body>
     <%- include('./partials/nav.ejs') %>
-    <div class=" container mt-3">
+    <div class="container mt-3">
         <form action="/blog" method="post" enctype="multipart/form-data">
             <div class="mb-3">
-                <label for="coverimage" class="form-label">Cover Image</label>
-                <input type="file" class="form-control" id="coverimage" name="coverimage" aria-describedby="coverimage">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
             </div>
             <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title" aria-describedby="title">
+                <label for="coverimage" class="form-label">Cover Image</label>
+                <input type="file" class="form-control" id="coverimage" name="coverimage" required>
             </div>
             <div class="mb-3">
                 <label for="body">Content</label>
                 <textarea class="form-control" id="body" name="body"></textarea>
             </div>
             <div class="mb-3">
-                <button class="btn btn-primary">Submit</button>
+                <button class="btn btn-primary">Publish Blog</button>
             </div>
         </form>
-        
     </div>
     <%- include('./partials/scripts.ejs') %>    
-
 </body>
 </html>
