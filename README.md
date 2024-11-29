@@ -2,6 +2,7 @@
 
 ## Overview
 This project is a blogging website built with Node.js, Express, and MongoDB. It allows users to create, read, and comment on blog posts. The application features user authentication, image uploads to Azure Blob Storage, and a responsive design using Bootstrap.
+[Check it out here](https://yapper-a-blogging-website.onrender.com/)
 
 ## Features
 - **User Authentication**: Users can sign up, sign in, and manage their profiles.
@@ -66,9 +67,6 @@ This project is a blogging website built with Node.js, Express, and MongoDB. It 
 
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
-
-## License
-This project is licensed under the ISC License. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 - [Node.js](https://nodejs.org/)
